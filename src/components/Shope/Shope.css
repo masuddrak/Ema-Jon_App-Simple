@@ -1,8 +1,7 @@
 .shope{
     display: grid;
     grid-template-columns: 4fr 1fr;
-    justify-content: space-around;
-    
+    justify-content: space-around; 
 }
 .item{
     display: grid;

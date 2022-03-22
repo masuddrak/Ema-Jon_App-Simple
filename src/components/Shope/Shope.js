@@ -7,16 +7,23 @@ const Shope = () => {
         fetch('products.json')
         .then(res=>res.json())
         .then(data=>setProducts(data))
-    },[])
+    },[]);
+    const addToCard=(product)=>{
+      console.log(product)
+    }
     return (
         <div className='shope'>
             <div className="item">
                 {
-                    products.map(product=><Product key={product.id} product={product}></Product>)
+                    products.map(product=><Product
+                         key={product.id}
+                          product={product}
+                          addToCard={addToCard}
+                          ></Product>)
                 }
             </div>
             <div className="item-summary">
-                <h1>summary</h1>
+                <h1>Product summary List</h1>
             </div>
         </div>
     );

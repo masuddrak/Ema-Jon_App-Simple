@@ -19,17 +19,31 @@ const addToDb=id=>{
     }
     localStorage.setItem('shopping-card',JSON.stringify(shoppinCard));
 
-    // remove card
-    const removeToCard=id=>{
-        const storageItems=localStorage.getItem('shopping-card');
-        if(storageItems){
-            const shoppinCard=JSON.parse(storageItems);
-            if(id in shoppinCard){
-                delete shoppinCard[id];
-                localStorage.setItem('shopping-card',JSON.stringify(shoppinCard));
+}
+        // get stroge card
+        const getStorageCard=()=>{
+            let shoppinCard={};
+                // getItems
+                const storageItems=localStorage.getItem('shopping-card');
+                if(storageItems){
+                shoppinCard=JSON.parse(storageItems);
             }
+            return shoppinCard;
+        }
+
+
+  // remove card
+  const removeToCard=id=>{
+    const storageItems=localStorage.getItem('shopping-card');
+    if(storageItems){
+        const shoppinCard=JSON.parse(storageItems);
+        if(id in shoppinCard){
+            delete shoppinCard[id];
+            localStorage.setItem('shopping-card',JSON.stringify(shoppinCard));
         }
     }
-
 }
-export {addToDb};
+export {
+    addToDb,
+    getStorageCard,
+};

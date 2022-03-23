@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb } from '../../utilities/fakedb';
+import { addToDb, getStorageCard } from '../../utilities/fakedb';
 import Card from '../Card/Card';
 import Product from '../Product/Product';
 import './Shope.css'
@@ -11,6 +11,16 @@ const Shope = () => {
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[]);
+// load data localstorage 
+    useEffect(()=>{
+        const storageCard=getStorageCard();
+        for(const id in storageCard){
+            const addedProducts=products.find(product=>product.id===id);
+            console.log(addedProducts)
+        }
+        
+    },[])
+
     const addToCard=(product)=>{
     //   console.log(product)
       const newCard=[...card,product];

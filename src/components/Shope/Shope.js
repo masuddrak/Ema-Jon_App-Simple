@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Card from '../Card/Card';
 import Product from '../Product/Product';
 import './Shope.css'
 const Shope = () => {
+    const [card,setCard]=useState([])
     const [products,setProducts]=useState([]);
     useEffect(()=>{
         fetch('products.json')
@@ -9,7 +11,9 @@ const Shope = () => {
         .then(data=>setProducts(data))
     },[]);
     const addToCard=(product)=>{
-      console.log(product)
+    //   console.log(product)
+      const newCard=[...card,product];
+      setCard(newCard)
     }
     return (
         <div className='shope'>
@@ -23,7 +27,7 @@ const Shope = () => {
                 }
             </div>
             <div className="item-summary">
-                <h1>Product summary List</h1>
+                <Card card={card}></Card>
             </div>
         </div>
     );
